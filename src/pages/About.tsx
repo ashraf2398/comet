@@ -11,6 +11,7 @@ import {
   Shield,
   Zap
 } from 'lucide-react';
+import CTASection from '../components/common/CTASection';
 import Card from '../components/common/Card';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from '../utils/animations';
@@ -290,43 +291,91 @@ const About: React.FC = () => {
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-primary-navy to-primary-navy/90 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Why Choose Comet?
+      <section className="relative py-24 lg:py-36 overflow-hidden bg-white">
+        {/* Decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZjhmOGY4IiBvcGFjaXR5PSIwLjUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=) opacity-5"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
+            <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-blue-600 bg-blue-50 rounded-full border border-blue-100">
+              Why Choose Us
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+              Built for the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Community Living</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              We're not just another software company. We're your partners in building stronger communities.
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              We're redefining community management with innovative technology and unparalleled support to create exceptional living and working experiences.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: Award,
                 title: 'Industry Expertise',
-                description: 'Deep understanding of community management challenges across residential, commercial, and recreational spaces.'
+                description: 'Deep understanding of community management challenges across residential, commercial, and recreational spaces.',
+                stats: '15+ Years Experience'
               },
               {
                 icon: TrendingUp,
                 title: 'Proven Results',
-                description: 'Our clients see average improvements of 40% in operational efficiency and 60% in resident satisfaction.'
+                description: 'Our clients see average improvements of 40% in operational efficiency and 60% in resident satisfaction.',
+                stats: '95% Client Retention'
               },
               {
                 icon: Globe,
                 title: 'Global Scale',
-                description: 'From local communities to international property portfolios, our platform scales with your growth.'
+                description: 'From local communities to international property portfolios, our platform scales with your growth.',
+                stats: '500+ Communities'
               }
             ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl mb-6">
-                  <item.icon className="h-8 w-8 text-blue-300" />
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="group relative bg-white rounded-2xl p-8 border border-gray-100 hover:border-blue-100 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-xl hover:shadow-blue-50"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 mb-6 mx-auto rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center border border-blue-100 group-hover:border-blue-200 transition-all duration-300">
+                    <item.icon className="h-8 w-8 text-blue-500 group-hover:text-blue-600 transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-5">
+                    {item.description}
+                  </p>
+                  <div className="text-sm font-medium text-blue-500 mt-4 pt-4 border-t border-gray-100">
+                    {item.stats}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                <p className="text-blue-100 leading-relaxed">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
+          </div>
+          
+          <div className="mt-16 text-center">
+            <p className="text-gray-600 text-lg mb-8">
+              Join the community of forward-thinking property managers
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
+                Get Started Free
+              </button>
+              <button className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-700 font-medium rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300">
+                Schedule a Demo
+              </button>
+            </div>
           </div>
         </div>
       </section>

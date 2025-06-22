@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Button from './Button';
 
 const Header: React.FC = () => {
@@ -41,12 +41,13 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="relative">
-              <Zap className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition-colors" />
-              <div className="absolute inset-0 bg-blue-600 rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-opacity" />
+              <img 
+                src="/assets/images/clogo.png" 
+                alt="Comet Logo" 
+                className="h-100 w-100 transition-transform group-hover:scale-110"
+              />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-              Comet
-            </span>
+           
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,15 +58,15 @@ const Header: React.FC = () => {
                 to={item.path}
                 className={`relative text-sm font-medium transition-colors duration-200 ${
                   location.pathname === item.path
-                    ? 'text-blue-600'
-                    : 'text-gray-600 hover:text-blue-600'
+                    ? 'text-yellow-500 font-semibold'
+                    : 'text-gray-600 hover:text-yellow-500'
                 }`}
               >
                 {item.name}
                 {location.pathname === item.path && (
                   <motion.div
                     layoutId="activeNavItem"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-500 rounded-full"
                   />
                 )}
               </Link>
@@ -75,17 +76,19 @@ const Header: React.FC = () => {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <Link to="/dashboard">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600">
                 Dashboard
               </Button>
             </Link>
-            <Button size="sm">Get Demo</Button>
+            <Button size="sm" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 border-yellow-500 hover:border-yellow-600">
+              Get Demo
+            </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors"
+            className="lg:hidden p-2 text-gray-600 hover:text-yellow-500 transition-colors"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
+import CTASection from '../components/common/CTASection';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from '../utils/animations';
 
@@ -309,24 +310,19 @@ const Services: React.FC = () => {
       ))}
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-teal-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Ready to Transform Your Community?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Choose the solution that fits your needs and start building stronger, more connected communities today.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Button size="lg" variant="secondary">
-              Start Free Trial
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-              Schedule Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title={
+          <>
+            Transform Your Community{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
+              Today
+            </span>
+          </>
+        }
+        description="Join thousands of community managers who trust our platform to create more connected, efficient, and engaging spaces."
+        primaryButtonText="Start Free Trial"
+        secondaryButtonText="Schedule Demo"
+      />
     </div>
   );
 };

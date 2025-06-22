@@ -177,25 +177,69 @@ const SolutionsPreview: React.FC = () => {
           variants={fadeInUp}
           initial="initial"
           animate={isVisible ? "animate" : "initial"}
-          className="text-center mt-20"
+          className="relative py-20 md:py-24 px-4 sm:px-6 lg:px-8 mt-24"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-teal-600 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-black/10" />
-            <div className="relative">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Ready to Transform Your Community?
-              </h3>
-              <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-                Join thousands of property managers and community leaders who trust Comet 
-                to streamline operations and enhance resident experiences.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <Button size="lg" variant="secondary">
-                  Start Free Trial
-                </Button>
-                <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white hover:text-blue-600">
-                  Schedule Demo
-                </Button>
+          {/* Decorative elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-80 h-80 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div className="absolute -bottom-40 -left-20 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+          </div>
+          
+          <div className="relative max-w-7xl mx-auto">
+            <div className="relative bg-gradient-to-br from-blue-700 to-teal-700 rounded-3xl p-8 md:p-12 lg:px-16 lg:py-16 overflow-hidden">
+              {/* Pattern overlay */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==')]"></div>
+              </div>
+              
+              <div className="relative z-10 text-center">
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-sm font-medium text-white/90 mb-6 border border-white/20">
+                  <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
+                  Join Our Growing Community
+                </div>
+                
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                  Ready to Transform <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-100">
+                    Your Community?
+                  </span>
+                </h3>
+                
+                <p className="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+                  Join thousands of property managers and community leaders who trust Comet 
+                  to streamline operations and enhance resident experiences.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button 
+                    size="xl" 
+                    variant="secondary"
+                    className="group relative overflow-hidden px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  >
+                    <span className="relative z-10">Start Free Trial</span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  </Button>
+                  
+                  <Button 
+                    size="xl" 
+                    variant="outline"
+                    className="group relative overflow-hidden px-8 py-4 text-base font-semibold text-white border-2 border-white/30 hover:border-white/50 bg-transparent hover:bg-white/10 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      <span>Schedule Demo</span>
+                      <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                  </Button>
+                </div>
+                
+                <div className="mt-8 flex items-center justify-center space-x-2 text-sm text-blue-100/80">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>No credit card required • 14-day free trial</span>
+                </div>
               </div>
             </div>
           </div>
